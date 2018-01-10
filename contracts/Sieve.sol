@@ -86,6 +86,24 @@ contract Sieve {
 
   }
 
+  // Returns the ith entry of given list of primes
+  // primeAt(7,2) => 5
+  function primeAt(uint a, uint i) public pure returns (uint p) {
+
+    uint[] memory plist = primes(a);
+    p = plist[i];
+
+  }
+
+  // Returns the number of primes <= a
+  // numPrimes(7) => 4
+  function numPrimes(uint a) public pure returns (uint n) {
+
+    uint[] memory plist = primes(a);
+    n = plist.length;
+
+  }
+
   // Square root function
   // sqrt(5) => 2
   function sqrt(uint x) public pure returns (uint y) {
