@@ -36,4 +36,34 @@ contract TestSieve {
 
   }
 
+  // Make sure that primes(16) doesn't give you 17
+  function testoffbyone16() public {
+
+    Sieve sieve = new Sieve();
+    uint notexpected = 17;
+    uint siexteen = sieve.numPrimes(16);
+
+    for (uint j=0; j < siexteen; j++) {
+      Assert.notEqual(sieve.primeAt(16,j), notexpected, "Should not see 17 in there.");
+    }
+
+  }
+
+  // Make sure that primes(18) gives you 17
+  function testoffbyone18() public {
+
+    Sieve sieve = new Sieve();
+    uint expected = 17;
+    uint found17;
+    uint sieighteen = sieve.numPrimes(18);
+
+    for (uint j=0; j < sieighteen; j++) {
+      if (sieve.primeAt(18,j) == expected) {
+        found17 = 1;
+      }
+    }
+    Assert.equal(found17, 1, "Should see 17 in there.");
+
+  }
+
 }
