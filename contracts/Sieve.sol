@@ -10,9 +10,9 @@ contract Sieve {
       allNums[j] = j+2;
     }
 
-    // Generate array which will house which numbers to kill
-    // Will be filled with 0s to start; 1s will denote kills
-    uint[] memory isNotPrime = new uint[](a-1);
+    // Generate array which will house which numbers to be marked as composite
+    // When done, true values will denote composite
+    bool[] memory isNotPrime = new bool[](a-1);
 
     // This will house the primes when done
     uint[] memory primesplus = new uint[](a-1);
@@ -53,7 +53,7 @@ contract Sieve {
           // Ex: 0 -> 2, 2 -> 4, etc
           k = k + sieveNum;
           // if sieve number is 2, eliminate 4, then 6,
-          isNotPrime[k] = 1;
+          isNotPrime[k] = true;
         }
 
     // Once we've made it to the end of the array
@@ -69,7 +69,7 @@ contract Sieve {
     //             isNotPrime = (0,0,1,0,1,0...)
     // Time to create an array  (2,3,5,7...,0,0)
     for (j=0; j < a-1; j++) {
-      if (isNotPrime[j] == 0) {
+      if (isNotPrime[j] == false) {
         primesplus[numPrimes] = allNums[j];
         numPrimes++;  
       }
